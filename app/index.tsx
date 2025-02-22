@@ -1,5 +1,7 @@
-import { Redirect } from "expo-router";
-import  "../global.css";
+// app/index.tsx
+import { Redirect } from 'expo-router';
+import "../global.css"
+
 export default function Index() {
-  return <Redirect href="/auth/SignIn" />; 
+  return <Redirect href="/onboarding" />;
 }
