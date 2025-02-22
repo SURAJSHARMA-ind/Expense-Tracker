@@ -1,12 +1,14 @@
-// app/_layout.tsx
-import { Stack } from 'expo-router';
+import { Stack } from "expo-router";
 
-export default function RootLayout() {
+export default function Layout() {
   return (
-    <Stack screenOptions={{headerShown:false}}>
-      <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-      <Stack.Screen name="onboarding2" options={{ headerShown: false }} />
-      <Stack.Screen name="dashboard" options={{ headerShown: true }} />
+    <Stack screenOptions={{
+      headerShown: false,
+      contentStyle: { backgroundColor: '#1C1C1E' }
+    }}>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="auth/SignIn" />
+      <Stack.Screen name="auth/SignUp" />
     </Stack>
   );
 }
