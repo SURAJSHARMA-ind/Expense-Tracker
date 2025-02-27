@@ -13,7 +13,7 @@ const SignIn = () => {
   };
 
   return (
-    <View className="flex-1 bg-[#1C1C1E] px-6">
+    <View className="flex-1 bg-[#1a1a2e] px-6">
       <TouchableOpacity
         className="mt-12"
         onPress={() => router.back()}
