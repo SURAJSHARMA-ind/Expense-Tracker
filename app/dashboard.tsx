@@ -64,7 +64,7 @@ export default function DashboardScreen() {
             </TouchableOpacity>
 
             {/* Logout Button */}
-            <TouchableOpacity className="bg-[#3d3d5c] p-2 rounded-lg">
+            <TouchableOpacity onPress={() => router.push('/onboarding')} className="bg-[#3d3d5c] p-2 rounded-lg">
               <Ionicons name="log-out-outline" size={24} color="white" />
             </TouchableOpacity>
           </View>

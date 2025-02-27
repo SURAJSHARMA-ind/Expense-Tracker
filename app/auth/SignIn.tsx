@@ -80,7 +80,7 @@ const SignIn = () => {
 
       <TouchableOpacity
         className="bg-blue-500 rounded-xl py-3 items-center"
-        onPress={handleSubmit(onSubmit)}
+        onPress={() => router.push('/dashboard')}
       >
         <Text className="text-white font-semibold text-lg">Sign in</Text>
       </TouchableOpacity>
