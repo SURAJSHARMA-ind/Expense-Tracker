@@ -1,15 +1,36 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import { router } from "expo-router";
+import { Redirect, router } from "expo-router";
 import { Ionicons } from '@expo/vector-icons';
+import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { signInUser } from '../services/auth';
 
 const SignIn = () => {
   const { control, handleSubmit } = useForm();
   const [showPassword, setShowPassword] = useState(false);
+  
+  const onSubmit = async (data: any) => {
+    try {
+      // Validate inputs
+      if (!data.email || !data.password) {
+        Alert.alert('Error', 'Please fill in all fields');
+        return;
+      }
 
-  const onSubmit = (data: any) => {
-    console.log("SignIn Data:", data);
+      // Call your authentication API
+      const response = await signInUser(data.email, data.password);
+      
+      // Store the auth token
+      await AsyncStorage.setItem('userToken', response.token);
+      
+      // Navigate to dashboard
+      router.push("/dashboard");
+    } catch (error) {
+      Alert.alert('Error', 'Invalid email or password');
+      console.error('Sign in error:', error);
+    }
   };
 
   return (
@@ -109,5 +130,6 @@ const SignIn = () => {
     </View>
   );
 };
+
 
 export default SignIn;
