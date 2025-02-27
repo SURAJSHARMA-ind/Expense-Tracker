@@ -1,7 +1,7 @@
-// app/dashboard.tsx
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, TextInput, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 type Expense = {
   id: string;
@@ -12,6 +12,7 @@ type Expense = {
 };
 
 export default function DashboardScreen() {
+  const router = useRouter();
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [amount, setAmount] = useState('');
@@ -52,9 +53,21 @@ export default function DashboardScreen() {
       <View className="bg-[#2d2d44] p-6 rounded-b-3xl">
         <View className="flex-row justify-between items-center mb-4">
           <Text className="text-white text-2xl font-bold">Dashboard</Text>
-          <TouchableOpacity className="bg-[#3d3d5c] p-2 rounded-lg">
-            <Ionicons name="log-out-outline" size={24} color="white" />
-          </TouchableOpacity>
+          <View className="flex-row gap-3">
+            {/* View Report Button */}
+            <TouchableOpacity
+              className="bg-[#3d3d5c] px-4 py-2 rounded-lg flex-row items-center"
+              onPress={() => router.push('/reports')}
+            >
+              <Ionicons name="bar-chart" size={20} color="white" />
+              <Text className="text-white ml-2">View Report</Text>
+            </TouchableOpacity>
+
+            {/* Logout Button */}
+            <TouchableOpacity className="bg-[#3d3d5c] p-2 rounded-lg">
+              <Ionicons name="log-out-outline" size={24} color="white" />
+            </TouchableOpacity>
+          </View>
         </View>
         <View className="bg-[#3d3d5c] p-4 rounded-xl">
           <Text className="text-gray-300 text-lg">Total Expenses</Text>

@@ -2,24 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LineChart, PieChart } from 'react-native-chart-kit';
-
-type ExpenseData = {
-  date: string;
-  amount: number;
-  category: string;
-};
+import { useRouter } from 'expo-router';
 
 export default function ReportsScreen() {
+  const router = useRouter();
   const [timeframe, setTimeframe] = useState<'week' | 'month' | 'year'>('month');
-  
-  // Sample data - replace with actual data
-  const expenseData: ExpenseData[] = [
-    { date: '2024-01-01', amount: 50, category: 'Food' },
-    { date: '2024-01-02', amount: 30, category: 'Transport' },
-    { date: '2024-01-03', amount: 100, category: 'Shopping' },
-    { date: '2024-01-04', amount: 20, category: 'Food' },
-    { date: '2024-01-05', amount: 80, category: 'Bills' },
-  ];
 
   const screenWidth = Dimensions.get('window').width;
 
@@ -50,6 +37,11 @@ export default function ReportsScreen() {
   return (
     <ScrollView className="flex-1 bg-[#1a1a2e]">
       <View className="p-6">
+        {/* Back Button */}
+        <TouchableOpacity onPress={() => router.back()} className="mb-4">
+          <Ionicons name="arrow-back" size={24} color="white" />
+        </TouchableOpacity>
+        
         <Text className="text-white text-2xl font-bold mb-6">Expense Reports</Text>
 
         {/* Timeframe Selector */}
@@ -74,9 +66,7 @@ export default function ReportsScreen() {
             height={220}
             chartConfig={chartConfig}
             bezier
-            style={{
-              borderRadius: 16
-            }}
+            style={{ borderRadius: 16 }}
           />
         </View>
 
@@ -93,26 +83,6 @@ export default function ReportsScreen() {
             paddingLeft="15"
             absolute
           />
-        </View>
-
-        {/* Summary Stats */}
-        <View className="flex-row flex-wrap justify-between">
-          <View className="bg-[#2d2d44] p-4 rounded-xl w-[48%] mb-4">
-            <Text className="text-gray-400 mb-2">Total Spent</Text>
-            <Text className="text-white text-xl font-bold">$1,200</Text>
-          </View>
-          <View className="bg-[#2d2d44] p-4 rounded-xl w-[48%] mb-4">
-            <Text className="text-gray-400 mb-2">Avg. Daily</Text>
-            <Text className="text-white text-xl font-bold">$40</Text>
-          </View>
-          <View className="bg-[#2d2d44] p-4 rounded-xl w-[48%] mb-4">
-            <Text className="text-gray-400 mb-2">Highest Category</Text>
-            <Text className="text-white text-xl font-bold">Food</Text>
-          </View>
-          <View className="bg-[#2d2d44] p-4 rounded-xl w-[48%] mb-4">
-            <Text className="text-gray-400 mb-2">Total Entries</Text>
-            <Text className="text-white text-xl font-bold">24</Text>
-          </View>
         </View>
       </View>
     </ScrollView>
