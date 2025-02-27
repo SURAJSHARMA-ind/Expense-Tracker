@@ -3,16 +3,17 @@ import { View, Text, TouchableOpacity, ScrollView, TextInput, Modal } from 'reac
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
-type Expense = {
-  id: string;
-  amount: number;
-  category: string;
-  date: string;
-  description: string;
-};
-
 export default function DashboardScreen() {
   const router = useRouter();
+
+  type Expense = {
+    id: string;
+    amount: number;
+    category: string;
+    date: string;
+    description: string;
+  };
+
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [amount, setAmount] = useState('');
@@ -61,6 +62,15 @@ export default function DashboardScreen() {
             >
               <Ionicons name="bar-chart" size={20} color="white" />
               <Text className="text-white ml-2">View Report</Text>
+            </TouchableOpacity>
+
+            {/* Budget Tracking Button */}
+            <TouchableOpacity
+              className="bg-[#3d3d5c] px-4 py-2 rounded-lg flex-row items-center"
+              onPress={() => router.push('/budget')}
+            >
+              <Ionicons name="wallet" size={20} color="white" />
+              <Text className="text-white ml-2">Budget</Text>
             </TouchableOpacity>
 
             {/* Logout Button */}
