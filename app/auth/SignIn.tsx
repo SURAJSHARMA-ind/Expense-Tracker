@@ -14,8 +14,8 @@ const SignIn = () => {
 
   return (
     <View className="flex-1 bg-[#1C1C1E] px-6">
-      <TouchableOpacity 
-        className="mt-12" 
+      <TouchableOpacity
+        className="mt-12"
         onPress={() => router.back()}
       >
         <Ionicons name="arrow-back" size={24} color="white" />
@@ -32,11 +32,11 @@ const SignIn = () => {
           <View className="mb-4">
             <View className="flex-row items-center bg-[#2C2C2E] rounded-xl px-4 py-3">
               <Ionicons name="mail-outline" size={20} color="#8E8E93" />
-              <TextInput 
+              <TextInput
                 className="flex-1 ml-3 text-white focus:outline-none"
-                placeholder="Mobile no. or email" 
+                placeholder="Mobile no. or email"
                 placeholderTextColor="#8E8E93"
-                onChangeText={onChange} 
+                onChangeText={onChange}
                 value={value}
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -53,20 +53,20 @@ const SignIn = () => {
           <View className="mb-4">
             <View className="flex-row items-center bg-[#2C2C2E] rounded-xl px-4 py-3">
               <Ionicons name="lock-closed-outline" size={20} color="#8E8E93" />
-              <TextInput 
+              <TextInput
                 className="flex-1 ml-3 text-white"
-                placeholder="Password" 
+                placeholder="Password"
                 placeholderTextColor="#8E8E93"
                 secureTextEntry={!showPassword}
-                onChangeText={onChange} 
-                value={value} 
+                onChangeText={onChange}
+                value={value}
                 style={{ borderWidth: 0, borderColor: 'transparent' }}
               />
               <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                <Ionicons 
-                  name={showPassword ? "eye-outline" : "eye-off-outline"} 
-                  size={20} 
-                  color="#8E8E93" 
+                <Ionicons
+                  name={showPassword ? "eye-outline" : "eye-off-outline"}
+                  size={20}
+                  color="#8E8E93"
                 />
               </TouchableOpacity>
             </View>
@@ -78,7 +78,7 @@ const SignIn = () => {
         <Text className="text-blue-500 text-right">Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity 
+      <TouchableOpacity
         className="bg-blue-500 rounded-xl py-3 items-center"
         onPress={handleSubmit(onSubmit)}
       >
@@ -89,9 +89,9 @@ const SignIn = () => {
         <Text className="text-white text-center mb-4">Sign in with</Text>
         <View className="flex-row justify-center space-x-4">
           <TouchableOpacity className="bg-[#2C2C2E] p-3 rounded-full">
-            <Image 
-              source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg' }}
-              className="w-6 h-6"
+            <Image
+              source={require('../../assets/images/google.png')}
+              style={{ width: 24, height: 24, resizeMode: 'contain' }}
             />
           </TouchableOpacity>
           <TouchableOpacity className="bg-[#2C2C2E] p-3 rounded-full">
